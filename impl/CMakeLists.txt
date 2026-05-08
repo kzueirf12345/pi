@@ -37,8 +37,16 @@ endif()
 
 ###===========================================PACKAGES==============================================
 
+find_path(MPFR_INCLUDE_DIR mpfr.h)
+find_path(GMP_INCLUDE_DIR gmp.h)
+
+find_library(MPFR_LIBRARY mpfr)
+find_library(GMP_LIBRARY gmp)
+
 ###===========================================SUBDIRECTORY==========================================
 
+add_subdirectory(source/libs)
+add_subdirectory(source/Testing)
 add_subdirectory(source/CliParser)
 add_subdirectory(source/Measurer)
 add_subdirectory(source/Calculation)
@@ -54,7 +62,17 @@ if(SANITIZE AND NOT MSVC)
 endif()
 
 target_link_libraries(pi PRIVATE
+    gmp
+    mpfr
+
+    libs
+    Testing
     CliParser
     Measurer
     Calculation
+)
+
+target_include_directories(pi PRIVATE 
+    mpfr
+    gmp
 )

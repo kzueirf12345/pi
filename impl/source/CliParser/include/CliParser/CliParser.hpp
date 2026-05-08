@@ -15,7 +15,8 @@ class CliParser {
 public:
 
 #define MODE_LIST_(V) \
-    V(BENCH_MONTE_CARLO)
+    V(BENCH_MONTE_CARLO) \
+    V(BENCH_GAUSS_LEGENRE_AND_CHUDNOVSKY)
 
 #define DEFINE_ENUM_(name) name,
     enum class Mode {

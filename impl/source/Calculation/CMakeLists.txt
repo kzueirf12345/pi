@@ -1,6 +1,8 @@
 add_library(Calculation STATIC
     src/MonteCarlo.cpp
     src/Rand.cpp
+    src/Chudnovsky.cpp
+    src/GaussLegendre.cpp
 )
 
 target_include_directories(Calculation
@@ -18,6 +20,7 @@ if(TARGET project_sanitizers)
 endif()
 
 target_link_libraries(Calculation PRIVATE 
+    libs
     Measurer
 )
 

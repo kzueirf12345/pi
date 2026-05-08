@@ -4,8 +4,11 @@
 #include <stdexcept>
 #include <unistd.h>
 
+#include "Calculation/Chudnovsky.hpp"
+#include "Calculation/GaussLegendre.hpp"
 #include "CliParser/CliParser.hpp"
 #include "Calculation/MonteCarlo.hpp"
+#include "Testing/Testing.hpp"
 
 int main(int argc, char* argv[]) try {
     CliParser cli(argc, argv);
@@ -35,6 +38,11 @@ int main(int argc, char* argv[]) try {
             pi::BenchMonteCarlo(
                 *output_ptr, opts.seed, opts.buckets_cnt, opts.batches_cnt, opts.iterations_cnt
             );
+        } break;
+
+        case CliParser::Mode::BENCH_GAUSS_LEGENRE_AND_CHUDNOVSKY: {
+            pi::VerifyAlgorithm(*output_ptr, "Gauss-Legendre Dummy", pi::GaussLegendre, 50);
+            pi::VerifyAlgorithm(*output_ptr, "Chudnovsky Dummy", pi::Chudnovsky, 40);
         } break;
 
         default: {
