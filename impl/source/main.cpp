@@ -41,8 +41,8 @@ int main(int argc, char* argv[]) try {
         } break;
 
         case CliParser::Mode::TESTING_GAUSS_LEGENRE_AND_CHUDNOVSKY: {
-            pi::VerifyAlgorithm(*output_ptr, "Gauss-Legendre Dummy", pi::GaussLegendre, opts.iterations_cnt);
-            pi::VerifyAlgorithm(*output_ptr, "Chudnovsky Dummy", pi::Chudnovsky, opts.iterations_cnt);
+            pi::VerifyAlgorithm(*output_ptr, "Gauss-Legendre", pi::GaussLegendre, opts.iterations_cnt);
+            pi::VerifyAlgorithm(*output_ptr, "Chudnovsky", pi::Chudnovsky, opts.iterations_cnt);
         } break;
 
         case CliParser::Mode::BENCH_GAUSS_LEGENRE_AND_CHUDNOVSKY: {

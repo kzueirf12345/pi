@@ -20,6 +20,7 @@ if(TARGET project_sanitizers)
 endif()
 
 target_link_libraries(Calculation PRIVATE 
+    gmpxx
     libs
     Measurer
 )
