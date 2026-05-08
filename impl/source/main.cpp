@@ -2,9 +2,10 @@
 #include <cstdlib>
 #include <fstream>
 #include <stdexcept>
+#include <unistd.h>
 
 #include "CliParser/CliParser.hpp"
-#include "Measurer/Measurer.hpp"
+#include "Calculation/MonteCarlo.hpp"
 
 int main(int argc, char* argv[]) try {
     CliParser cli(argc, argv);
@@ -27,11 +28,14 @@ int main(int argc, char* argv[]) try {
         output_ptr = &output_file;
     }
 
+    (void)output_ptr;
+
     switch (opts.mode) {
-        case CliParser::Mode::MAIN: {
-            *output_ptr << "Hello, World!\n";
-            break;
-        }
+        case CliParser::Mode::BENCH_MONTE_CARLO: {
+            pi::BenchMonteCarlo(
+                *output_ptr, opts.seed, opts.buckets_cnt, opts.batches_cnt, opts.iterations_cnt
+            );
+        } break;
 
         default: {
             std::cerr << "Unhandled mode!" << std::endl;

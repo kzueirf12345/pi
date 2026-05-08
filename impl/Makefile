@@ -22,3 +22,6 @@ setup_cpu:
 restore_cpu:
 	sudo cpupower frequency-set -g powersave
 	if [ -f $(AMD_BOOST) ]; then echo 1 | sudo tee $(AMD_BOOST); fi
+
+
+	

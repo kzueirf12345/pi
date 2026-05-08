@@ -41,6 +41,7 @@ endif()
 
 add_subdirectory(source/CliParser)
 add_subdirectory(source/Measurer)
+add_subdirectory(source/Calculation)
 
 add_executable(pi source/main.cpp)
 
@@ -55,4 +56,5 @@ endif()
 target_link_libraries(pi PRIVATE
     CliParser
     Measurer
+    Calculation
 )

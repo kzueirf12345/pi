@@ -28,6 +28,8 @@ class Runner {
 
 public:
 
+    static void VoidSetup() {}
+
     template <typename SetupF, typename F>
     static inline Val benchLatency(
         const size_t buckets_cnt, 

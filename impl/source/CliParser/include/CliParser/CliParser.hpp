@@ -15,7 +15,7 @@ class CliParser {
 public:
 
 #define MODE_LIST_(V) \
-    V(MAIN)
+    V(BENCH_MONTE_CARLO)
 
 #define DEFINE_ENUM_(name) name,
     enum class Mode {
@@ -42,7 +42,7 @@ public:
         size_t buckets_cnt = 10;
         size_t batches_cnt = 50;
         size_t iterations_cnt = 50000;
-        Mode mode = Mode::MAIN;
+        Mode mode = Mode::BENCH_MONTE_CARLO;
         uint64_t seed = std::random_device{}();
         bool verbose = false;
         bool help_requested = false;

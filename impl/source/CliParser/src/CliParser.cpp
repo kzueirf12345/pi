@@ -15,7 +15,7 @@ void CliParser::printHelp(std::ostream& output) {
         MODE_LIST_(DEFINE_ENUM_)
 #undef DEFINE_ENUM_
               
-           << " (default: LATENCY)\n"
+           << " (default: BENCH_MONTE_CARLO)\n"
               "  -o, --output <FILE>        Specify output file (default: stdout)\n"
               "  -u, --buckets <VALUE>      Specify buckets count (default: 10)\n"
               "  -a, --batches <VALUE>      Specify batches count (default: 50)\n"
