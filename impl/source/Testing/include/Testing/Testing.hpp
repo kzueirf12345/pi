@@ -15,4 +15,10 @@ void VerifyAlgorithm(
     std::ostream& out, const std::string& algo_name, PiAlgoFunc algo, size_t decimal_digits
 );
 
+void BenchAlgorithm(
+    std::ostream& out,
+    const std::string& algo_name, PiAlgoFunc algo, 
+    size_t decimal_digits, size_t buckets, size_t batches
+);
+
 } //namepsace pi

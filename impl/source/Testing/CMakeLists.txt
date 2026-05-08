@@ -18,6 +18,7 @@ endif()
 
 target_link_libraries(Testing PRIVATE 
     libs
+    Measurer
 )
 
 set_target_properties(Testing PROPERTIES

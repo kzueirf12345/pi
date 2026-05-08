@@ -3,6 +3,8 @@
 #include <iomanip>
 #include <ostream>
 
+#include "Measurer/Measurer.hpp"
+
 namespace pi {
 
 using namespace mpfr;
@@ -52,6 +54,23 @@ void VerifyAlgorithm(
         out << "Status:     [FAILED]  Matched only " << matched_digits 
             << " out of " << decimal_digits << " digits.\n";
     }
+}
+
+void BenchAlgorithm(
+    std::ostream& out,
+    const std::string& algo_name, PiAlgoFunc algo, 
+    size_t decimal_digits, size_t buckets, size_t batches
+) {
+    auto do_func = [&]() {
+        return algo(decimal_digits);
+    };
+
+    const measurer::Val time = measurer::Runner::benchLatency(buckets, batches, do_func);
+
+    out << std::left << std::setw(25) << algo_name 
+        << " | " << std::setw(10) << decimal_digits 
+        << " | " << std::setw(12) << static_cast<uint64_t>(time.mean) 
+        << " +/- " << static_cast<uint64_t>(time.stddev) << " clks\n";
 }
 
 } //namespace pi
